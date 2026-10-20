@@ -27,12 +27,11 @@ final class DeckServer {
                 MainActor.assumeIsolated { self?.accept(c) }
             }
             let ok: Bool = await withCheckedContinuation { cont in
-                var resumed = false
+                let once = Once()
                 l.stateUpdateHandler = { state in
-                    guard !resumed else { return }
                     switch state {
-                    case .ready: resumed = true; cont.resume(returning: true)
-                    case .failed, .cancelled: resumed = true; cont.resume(returning: false)
+                    case .ready: if once.fire() { cont.resume(returning: true) }
+                    case .failed, .cancelled: if once.fire() { cont.resume(returning: false) }
                     default: break
                     }
                 }
@@ -208,5 +207,19 @@ final class DeckServer {
     var url: String {
         let ip = Self.localAddresses().first ?? "127.0.0.1"
         return "http://\(ip):\(port)/?k=\(token)"
+    }
+}
+
+/// Ne laisse passer qu'une seule fois (pour ne reprendre une attente qu'une fois).
+final class Once: @unchecked Sendable {
+    private let lock = NSLock()
+    private var done = false
+
+    func fire() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        if done { return false }
+        done = true
+        return true
     }
 }
