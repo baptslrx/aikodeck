@@ -83,6 +83,14 @@ final class SelfTest: NSObject {
         let tv = scroll.documentView as! NSTextView
         w.contentView = scroll
         keep.append(w)
+        // Menu « Édition » (comme toute appli Mac) pour que ⌘A sélectionne tout
+        let mainMenu = NSMenu()
+        let editItem = NSMenuItem()
+        let edit = NSMenu(title: "Édition")
+        edit.addItem(withTitle: "Tout sélectionner", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a")
+        editItem.submenu = edit
+        mainMenu.addItem(editItem)
+        NSApp.mainMenu = mainMenu
         NSApp.activate(ignoringOtherApps: true)
         w.makeKeyAndOrderFront(nil)
         w.makeFirstResponder(tv)
