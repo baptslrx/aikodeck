@@ -53,6 +53,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        EditMenu.install(appName: "AikoDeck")
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         let img = NSImage(systemSymbolName: "square.grid.3x3.square", accessibilityDescription: "AikoDeck")?
             .withSymbolConfiguration(.init(pointSize: 14, weight: .medium))
