@@ -1,0 +1,40 @@
+→ Compilation universelle (arm64 + x86_64)…
+Sources/Actions.swift:90:28: warning: passing argument of non-sendable type 'NSWorkspace' outside of main actor-isolated context may introduce data races
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                           ^
+AppKit.NSWorkspace:1:12: note: class 'NSWorkspace' does not conform to the 'Sendable' protocol
+open class NSWorkspace : NSObject {
+           ^
+Sources/Actions.swift:90:72: warning: passing argument of non-sendable type 'NSWorkspace.OpenConfiguration' outside of main actor-isolated context may introduce data races
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                                                                       ^
+AppKit.NSWorkspace:3:16: note: class 'OpenConfiguration' does not conform to the 'Sendable' protocol
+    open class OpenConfiguration : NSObject, NSCopying {
+               ^
+Sources/Actions.swift:90:47: warning: non-sendable type 'NSRunningApplication' returned by implicitly asynchronous call to nonisolated function cannot cross actor boundary
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                                              ^
+AppKit.NSRunningApplication:2:12: note: class 'NSRunningApplication' does not conform to the 'Sendable' protocol
+open class NSRunningApplication : NSObject {
+           ^
+Sources/Actions.swift:90:28: warning: passing argument of non-sendable type 'NSWorkspace' outside of main actor-isolated context may introduce data races
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                           ^
+AppKit.NSWorkspace:1:12: note: class 'NSWorkspace' does not conform to the 'Sendable' protocol
+open class NSWorkspace : NSObject {
+           ^
+Sources/Actions.swift:90:72: warning: passing argument of non-sendable type 'NSWorkspace.OpenConfiguration' outside of main actor-isolated context may introduce data races
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                                                                       ^
+AppKit.NSWorkspace:3:16: note: class 'OpenConfiguration' does not conform to the 'Sendable' protocol
+    open class OpenConfiguration : NSObject, NSCopying {
+               ^
+Sources/Actions.swift:90:47: warning: non-sendable type 'NSRunningApplication' returned by implicitly asynchronous call to nonisolated function cannot cross actor boundary
+            _ = try? await NSWorkspace.shared.openApplication(at: url, configuration: config)
+                                              ^
+AppKit.NSRunningApplication:2:12: note: class 'NSRunningApplication' does not conform to the 'Sendable' protocol
+open class NSRunningApplication : NSObject {
+           ^
+✓ build/AikoDeck.app prêt
+Executable=/Users/runner/work/aikodeck/aikodeck/macos/build/AikoDeck.app/Contents/MacOS/AikoDeck
+designated => identifier "fr.aikographic.aikodeck"

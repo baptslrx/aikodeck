@@ -1,0 +1,19 @@
+  ok   boutons de départ : ["DaVinci", "Mac", "AikoFlow", "Aiko"]
+== Serveur sur le port 18765 — adresse affichée : http://192.168.64.23:18765/?k=…
+  ok   la page de la télécommande s'ouvre
+  ok   sans le code du QR : accès refusé (401)
+  ok   avec un faux code : accès refusé
+  ok   avec le bon code : 4 pages de boutons
+  ok   icône pour l'écran d'accueil
+  ok   touches du clavier trouvées
+== Vraies frappes (Accessibilité : oui)
+  ok   bouton « taper un texte » → « Bonjour AikoDeck é »
+  ok   bouton raccourci (touche B) → « Bonjour AikoDeck éb »
+  ok   ⌘A envoyé : tout le texte est sélectionné
+  ok   touche impossible : erreur claire (« Touche inconnue : #999 »)
+  ok   une modification sur le Mac est signalée au téléphone
+== Captures de la télécommande (taille iPhone)
+   telephone-sombre.png
+   telephone-clair.png
+
+Tout est OK
